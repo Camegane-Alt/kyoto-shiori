@@ -1,0 +1,17 @@
+{
+  "name": "京都・亀岡 旅のしおり",
+  "short_name": "京都しおり",
+  "description": "2026年10月9日〜10日 京都・亀岡 1泊2日の旅のしおり",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F2ED",
+  "theme_color": "#F4F2ED",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

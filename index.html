@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>京都・亀岡 旅のしおり</title>
+<meta name="description" content="2026年10月9日〜10日 京都・亀岡 1泊2日の旅のしおり">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="京都しおり">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#F4F2ED" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap">
+<style>
+:root{
+  --paper:#F4F2ED;       /* 生成りの紙 */
+  --card:#FFFFFF;
+  --ink:#141414;         /* 墨 */
+  --ink-2:#6A6760;
+  --hair:#DAD6CD;
+  --shu:#E5412D;         /* 朱 */
+  --shu-soft:#FCE6E0;
+  --kin:#F3C613;         /* 金（しおりのリボン） */
+  --on-ink:#F4F2ED;
+  --illo-bg:transparent;
+  --en:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;
+  --sans:"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;
+  --line:1.5px;
+  --sat:env(safe-area-inset-top,0px);
+  --sab:env(safe-area-inset-bottom,0px);
+  --sal:env(safe-area-inset-left,0px);
+  --sar:env(safe-area-inset-right,0px);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#121212;
+    --card:#1B1B1A;
+    --ink:#EFECE5;
+    --ink-2:#A19D95;
+    --hair:#33322F;
+    --shu:#FF5A40;
+    --shu-soft:#3A1C16;
+    --on-ink:#121212;
+    --illo-bg:#F4F2ED;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.7;
+  padding-left:var(--sal);padding-right:var(--sar);padding-bottom:calc(92px + var(--sab));
+  -webkit-tap-highlight-color:transparent;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:700;line-height:1.35}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px}
+.en{font-family:var(--en);letter-spacing:.08em}
+
+/* ---------- 表紙 ---------- */
+.cover{position:relative;padding:calc(18px + var(--sat)) 0 0;overflow:hidden}
+.masthead{display:flex;justify-content:space-between;align-items:center;font:700 10.5px/1 var(--en);letter-spacing:.22em;
+  border-bottom:var(--line) solid var(--ink);padding-bottom:10px}
+.masthead b{font-weight:800}
+.cover-body{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 38px;gap:4px;padding-top:6px}
+.illo{position:relative;margin:4px auto 0;width:min(100%,300px)}
+.illo img{display:block;width:100%;height:auto;border-radius:0}
+@media (prefers-color-scheme: dark){ .illo img{border-radius:999px 999px 24px 24px} }
+.tate{writing-mode:vertical-rl;font-family:var(--serif);font-size:13px;letter-spacing:.35em;color:var(--ink-2);
+  justify-self:end;padding-top:14px;white-space:nowrap}
+.tate b{color:var(--shu);font-weight:700}
+.title{margin-top:14px;text-align:center}
+.title .en{display:block;font-size:30px;font-weight:800;letter-spacing:.06em;line-height:1}
+.title .en i{font-style:normal;color:var(--shu)}
+.title .ja{display:block;margin-top:10px;font-family:var(--serif);font-size:14px;font-weight:500;letter-spacing:.9em;padding-left:.9em}
+.hanko{position:absolute;left:2px;top:22px;z-index:2;width:46px;height:46px;border-radius:50%;
+  border:2px solid var(--shu);color:var(--shu);display:grid;place-items:center;transform:rotate(-12deg);
+  font:700 11px/1.1 var(--serif);text-align:center;letter-spacing:.05em;background:color-mix(in srgb,var(--paper) 70%,transparent)}
+.issue{display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px;padding:10px 0;border-top:var(--line) solid var(--ink);border-bottom:var(--line) solid var(--ink)}
+.issue .d{font:800 13px/1.2 var(--en);letter-spacing:.06em}
+.issue .d small{display:block;font:500 10px/1.4 var(--en);letter-spacing:.18em;color:var(--ink-2)}
+.issue .n{font:800 34px/0.85 var(--en);letter-spacing:-.02em}
+.issue .n{text-align:right}
+.issue .n small{display:block;margin-top:6px;font-size:9.5px;letter-spacing:.16em;font-weight:700;color:var(--ink-2)}
+
+/* 予約番号 */
+.reserve{margin-top:14px;display:flex;align-items:center;gap:10px;width:100%;min-height:52px;padding:8px 16px;
+  border-radius:999px;border:var(--line) dashed var(--ink);background:transparent;color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.reserve .lbl{font:700 10px/1.2 var(--en);letter-spacing:.16em;white-space:nowrap}
+.reserve .val{font:600 16px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;flex:1;min-width:0;overflow-wrap:anywhere}
+.reserve .hint{font-size:11.5px;color:var(--ink-2);white-space:nowrap}
+
+/* 注意 */
+.notice{margin-top:12px;padding:14px 16px 14px;border-radius:18px;background:var(--card);border:var(--line) solid var(--ink);position:relative}
+.notice .h{display:flex;align-items:center;gap:8px;font:800 11px/1 var(--en);letter-spacing:.18em;margin-bottom:8px}
+.notice .h span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--shu);color:#fff;font:700 11px/1 var(--serif);letter-spacing:0}
+.notice ol{margin:0;padding:0;list-style:none;counter-reset:n}
+.notice li{position:relative;padding-left:26px;font-size:14px;line-height:1.6}
+.notice li+li{margin-top:6px}
+.notice li::before{counter-increment:n;content:"0" counter(n);position:absolute;left:0;top:2px;font:800 11px/1.6 var(--en);color:var(--shu)}
+
+/* 青海波の帯 */
+.nami{height:20px;margin:22px 0 0;color:var(--ink);opacity:.45}
+.nami svg{display:block;width:100%;height:100%}
+
+/* ---------- 固定タブ ---------- */
+.tabs{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 94%,transparent);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding-top:var(--sat);border-bottom:var(--line) solid var(--ink)}
+.tabs .wrap{display:flex;gap:2px;padding-top:8px;padding-bottom:8px}
+.tab{flex:1 1 0;min-width:max-content;min-height:44px;padding:0 6px;border-radius:999px;border:0;background:transparent;color:var(--ink);
+  font:700 13.5px/1 var(--sans);cursor:pointer;white-space:nowrap;position:relative}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--on-ink)}
+.tab .today{position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--shu)}
+
+.panel{display:none;padding-top:26px}
+.panel.active{display:block}
+.phead{display:flex;align-items:flex-end;gap:12px;margin-bottom:6px}
+.phead .big{font:800 44px/0.85 var(--en);letter-spacing:-.01em}
+.phead .big i{font-style:normal;color:var(--shu)}
+.phead .meta{padding-bottom:2px}
+.phead .meta b{display:block;font:800 12px/1.2 var(--en);letter-spacing:.14em}
+.phead .meta span{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.4}
+.lead{font-size:13px;color:var(--ink-2);margin:10px 0 22px;padding-top:10px;border-top:1px solid var(--hair)}
+
+/* ---------- タイムライン ---------- */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:61px;top:10px;bottom:10px;width:var(--line);background:var(--ink)}
+.tl-item{display:grid;grid-template-columns:48px 26px minmax(0,1fr);column-gap:6px;padding-bottom:26px;position:relative;scroll-margin-top:calc(84px + var(--sat))}
+.tl-time{font:800 14.5px/1.2 var(--en);text-align:right;padding-top:3px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.tl-time.ja{font:700 13px/1.4 var(--sans)}
+.tl-dot{display:flex;justify-content:center;padding-top:6px}
+.tl-dot::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--paper);border:var(--line) solid var(--ink);position:relative;z-index:1}
+.tl-item.kind-move .tl-dot::before{width:7px;height:7px;margin-top:2px;background:var(--ink)}
+.tl-body{min-width:0}
+.tl-body h3{font-size:16.5px;letter-spacing:.02em}
+.tl-body .memo{margin:3px 0 0;font-size:13.5px;color:var(--ink-2)}
+.tl-item.past{opacity:.42}
+.tl-item.is-now .tl-dot::before{width:15px;height:15px;margin-top:-2px;background:var(--shu);border-color:var(--shu);box-shadow:0 0 0 5px var(--shu-soft)}
+.tl-item.is-now .tl-body{background:var(--card);border:2px solid var(--shu);border-radius:18px;padding:12px 12px 14px;margin:-12px -2px 0 -8px}
+.badge{display:inline-block;font:800 10px/1 var(--en);padding:5px 8px 4px;border-radius:999px;vertical-align:3px;margin-left:8px;letter-spacing:.14em}
+.badge.now{background:var(--shu);color:#fff}
+.badge.next{border:var(--line) solid var(--ink);padding:3.5px 7px 2.5px}
+.alert{margin:10px 0 0;padding:9px 12px 9px 12px;border-radius:12px;background:var(--shu-soft);font-size:13px;line-height:1.6}
+.alert b{color:var(--shu)}
+
+/* ---------- ボタン ---------- */
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:0 14px;border-radius:999px;
+  border:var(--line) solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;font:700 13.5px/1.2 var(--sans);
+  flex:1 1 auto;text-align:center;cursor:pointer;letter-spacing:.02em}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:17px;height:17px;flex:none}
+.btn.fill{background:var(--ink);color:var(--on-ink)}
+.btn.shu{background:var(--shu);border-color:var(--shu);color:#fff}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none;border-style:dashed;background:transparent}
+
+/* ---------- カード ---------- */
+.card{background:var(--card);border:var(--line) solid var(--ink);border-radius:22px;overflow:hidden;margin-bottom:18px}
+.tl .card{margin:12px 0 0;border-radius:18px}
+.card .ph{aspect-ratio:16/10;background:#EFEBE3;position:relative;overflow:hidden;border-bottom:var(--line) solid var(--ink)}
+.tl .card .ph{aspect-ratio:2/1}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .ph .ph-svg{width:100%;height:100%;display:block}
+.card .cb{padding:14px 16px 16px}
+.tl .card .cb{padding:12px 14px 14px}
+.card h3{font-size:18px;display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}
+.tl .card h3{font-size:15.5px}
+.card .kana{font-size:11.5px;color:var(--ink-2);font-weight:500}
+.card .desc{margin:6px 0 0;font-size:14px}
+.facts{margin:12px 0 0;padding:0;list-style:none;font-size:13px}
+.facts li{display:grid;grid-template-columns:4.8em minmax(0,1fr);gap:8px;padding:6px 0;border-top:1px solid var(--hair)}
+.facts b{font:700 11.5px/1.75 var(--sans);color:var(--ink-2)}
+.facts span{overflow-wrap:anywhere}
+.num{font:800 12px/1 var(--en);color:var(--shu);letter-spacing:.1em}
+.tag{display:inline-block;font:700 10.5px/1 var(--sans);padding:4px 8px;border-radius:999px;border:1px solid var(--ink);align-self:center}
+
+.free{margin-top:12px;border:var(--line) dashed var(--ink);border-radius:16px;padding:12px 14px}
+.free label{font-size:12px;color:var(--ink-2);display:block;margin-bottom:6px}
+.free textarea{width:100%;min-height:92px;border:0;background:transparent;color:var(--ink);font:16px/1.6 var(--sans);resize:vertical;outline:none;padding:0}
+
+table.cancel{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+table.cancel th{font:800 10px/1 var(--en);letter-spacing:.14em;color:var(--ink-2);text-align:left;padding:8px 4px}
+table.cancel td{padding:8px 4px;border-top:1px solid var(--hair)}
+table.cancel td:last-child,table.cancel th:last-child{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--en);font-weight:800}
+table.cancel tr.here td{color:var(--shu);font-weight:700}
+table.cancel tr.here td:first-child::before{content:"●";font-size:8px;margin-right:6px;vertical-align:2px}
+.section-title{display:flex;align-items:center;gap:10px;font:800 11px/1 var(--en);letter-spacing:.2em;margin:22px 0 10px}
+.section-title::after{content:"";flex:1;height:1px;background:var(--ink)}
+.section-title span{font:700 12px/1 var(--sans);letter-spacing:.05em;color:var(--ink-2)}
+
+/* ---------- 持ち物 ---------- */
+.check-progress{display:flex;align-items:center;gap:12px;margin:8px 0 6px}
+.check-progress .count{font:800 26px/1 var(--en)}
+.check-progress .count small{font-size:13px;color:var(--ink-2)}
+.bar{flex:1;height:6px;border-radius:99px;background:var(--hair);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--shu);width:0;transition:width .25s}
+.checklist{list-style:none;margin:0;padding:0;background:var(--card);border:var(--line) solid var(--ink);border-radius:20px;overflow:hidden}
+.checklist li+li{border-top:1px solid var(--hair)}
+.checklist label{display:flex;align-items:center;gap:14px;min-height:56px;padding:8px 16px;cursor:pointer}
+.checklist input{appearance:none;-webkit-appearance:none;flex:none;width:26px;height:26px;border-radius:50%;border:var(--line) solid var(--ink);display:grid;place-content:center;margin:0;background:transparent}
+.checklist input:checked{background:var(--shu);border-color:var(--shu)}
+.checklist input:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.checklist input:checked+span{text-decoration:line-through;text-decoration-color:var(--shu);color:var(--ink-2)}
+.checklist small{display:block;font-size:11.5px;color:var(--ink-2)}
+.reset{background:none;border:0;color:var(--ink-2);font:12.5px var(--sans);text-decoration:underline;min-height:44px;cursor:pointer;padding:0;margin-top:6px}
+
+/* ---------- 奥付 ---------- */
+.footer{margin-top:34px;padding-bottom:10px}
+.footer .nami{margin:0 0 22px}
+.contacts{display:grid;gap:8px}
+.contact{display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 16px 8px 10px;border-radius:999px;background:var(--card);border:var(--line) solid var(--ink);text-decoration:none;color:var(--ink)}
+.contact .ic{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--on-ink);display:grid;place-items:center}
+.contact .ic svg{width:18px;height:18px}
+.contact .who{flex:1;min-width:0;font-weight:700;font-size:14px;line-height:1.35}
+.contact .who small{display:block;color:var(--ink-2);font-size:11.5px;font-weight:400}
+.contact .tel{font:800 14px/1 var(--en);letter-spacing:.04em;white-space:nowrap}
+.contact.empty{border-style:dashed}
+.contact.empty .ic{background:transparent;color:var(--ink);border:var(--line) dashed var(--ink)}
+.contact.empty .tel{color:var(--ink-2);font:500 11.5px/1.3 var(--sans);letter-spacing:0;text-align:right}
+.colophon{margin-top:30px;padding-top:14px;border-top:var(--line) solid var(--ink);font-size:11.5px;color:var(--ink-2)}
+.colophon h2{font:800 11px/1 var(--en);letter-spacing:.2em;color:var(--ink);margin-bottom:8px}
+.colophon ul{padding:0;margin:6px 0;list-style:none}
+.colophon li{margin-bottom:6px;overflow-wrap:anywhere;padding-left:12px;position:relative}
+.colophon li::before{content:"—";position:absolute;left:0}
+.colophon a{color:var(--ink-2)}
+.endmark{display:flex;justify-content:space-between;align-items:flex-end;margin-top:22px}
+.endmark .bc{display:flex;align-items:flex-end;gap:10px}
+.endmark .bc svg{height:34px;width:auto;color:var(--ink)}
+.endmark .bc span{font:700 9px/1.3 var(--en);letter-spacing:.16em;color:var(--ink)}
+.endmark .fin{font:800 28px/0.8 var(--en);color:var(--shu)}
+
+/* ---------- 下部ドック ---------- */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px calc(12px + var(--sar)) calc(8px + var(--sab)) calc(12px + var(--sal));
+  background:color-mix(in srgb,var(--paper) 95%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-top:var(--line) solid var(--ink)}
+.dock .in{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:8px}
+.dock .info{flex:1;min-width:0;background:none;border:0;padding:4px 2px;text-align:left;color:var(--ink);font:inherit;cursor:pointer;min-height:48px}
+.dock .info .l1{font:800 9.5px/1.3 var(--en);letter-spacing:.16em;color:var(--shu);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dock .info .l1 em{font:500 11px/1.3 var(--sans);letter-spacing:0;color:var(--ink-2);font-style:normal;margin-left:6px}
+.dock .info .l2{font-weight:700;font-size:14.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.dock .info .l2 .t{font:800 14.5px/1 var(--en);margin-right:6px}
+.dock .dbtn{flex:none;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;text-decoration:none;
+  border:var(--line) solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;padding:0}
+.dock .dbtn svg{width:20px;height:20px}
+.dock .dbtn.shu{background:var(--shu);border-color:var(--shu);color:#fff}
+.dock .dbtn[aria-disabled="true"]{opacity:.3;pointer-events:none}
+
+dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:560px;border-radius:26px 26px 0 0;background:var(--paper);color:var(--ink);border-top:var(--line) solid var(--ink)}
+dialog.sheet::backdrop{background:rgba(10,10,10,.45)}
+dialog.sheet .sheet-in{padding:20px 16px calc(16px + var(--sab))}
+dialog.sheet h2{font:800 12px/1 var(--en);letter-spacing:.2em;margin-bottom:14px}
+dialog.sheet .close{margin-top:12px;width:100%}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 11h14M8 21l2-4M16 21l-2-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="14" r="1.2" fill="currentColor"/><circle cx="15" cy="14" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="2" fill="currentColor"/><path d="M11 21l2-6 3 3v3M13 15l-1-6-4 3v3M12 9l4 2 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-4l2-5h12l2 5v4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 12h16M9 4h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="7.5" cy="17.5" r="1.8" fill="currentColor"/><circle cx="16.5" cy="17.5" r="1.8" fill="currentColor"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 3.5l2.6.4 1.3 4-1.9 1.5a11 11 0 0 0 5.9 5.9l1.5-1.9 4 1.3.4 2.6c.1 1.3-1 2.4-2.3 2.3C10.5 19 5 13.5 4.3 5.8 4.2 4.5 5.3 3.4 6.6 3.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-page" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-taxi" viewBox="0 0 24 24"><path d="M4 17v-5l2-5h12l2 5v5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 3h4v4h-4z" fill="currentColor"/><circle cx="7.5" cy="17.5" r="1.8" fill="currentColor"/><circle cx="16.5" cy="17.5" r="1.8" fill="currentColor"/></symbol>
+    <pattern id="seigaiha" width="28" height="14" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="14" cy="14" r="12"/><circle cx="14" cy="14" r="8"/><circle cx="14" cy="14" r="4"/>
+        <circle cx="0" cy="7" r="12"/><circle cx="0" cy="7" r="8"/><circle cx="0" cy="7" r="4"/>
+        <circle cx="28" cy="7" r="12"/><circle cx="28" cy="7" r="8"/><circle cx="28" cy="7" r="4"/>
+      </g>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="masthead"><span>VOL.<b>01</b></span><span><b>TABI NO SHIORI</b></span><span>AUTUMN 2026</span></div>
+    <div class="cover-body">
+      <div class="hanko" aria-hidden="true">京都<br>亀岡</div>
+      <div class="illo"><img src="images/hero.jpg" width="1024" height="1024" alt="秋の京都を歩き出す2人の旅人のイラスト" decoding="async" fetchpriority="high"></div>
+      <div class="tate">土壁の宿と、<b>ととのう</b>一泊二日。</div>
+    </div>
+    <h1 class="title"><span class="en">KYOTO <i>×</i> KAMEOKA</span><span class="ja">京都・亀岡 旅のしおり</span></h1>
+    <div class="issue">
+      <div class="d">10.09 FRI — 10.10 SAT<small>2 PERSONS ／ 1 NIGHT</small></div>
+      <div class="n" id="countdown" hidden></div>
+    </div>
+    <button class="reserve" id="reserve" type="button" aria-pressed="false">
+      <span class="lbl">RESERVATION</span>
+      <span class="val" id="reserveVal">●●●●●●●●</span>
+      <span class="hint" id="reserveHint">タップで表示</span>
+    </button>
+    <div class="notice" role="note">
+      <div class="h"><span>注</span>ATTENTION ／ 当日の注意</div>
+      <ol>
+        <li>亀岡の夜は流しのタクシーが少ない。<b>焼肉の行き帰りは事前に呼んでおく</b></li>
+        <li>サウナは<b>22時で使えなくなる</b>（21:45には終える）</li>
+        <li>お酒は<b>サウナのあと</b></li>
+      </ol>
+    </div>
+    <div class="nami" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#seigaiha)"/></svg></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="しおりの目次">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="day1" id="tab-day1" aria-controls="day1">1日目</button>
+    <button class="tab" role="tab" data-tab="day2" id="tab-day2" aria-controls="day2">2日目</button>
+    <button class="tab" role="tab" data-tab="stay" id="tab-stay" aria-controls="stay">宿・焼肉</button>
+    <button class="tab" role="tab" data-tab="spots" id="tab-spots" aria-controls="spots">寄り道</button>
+    <button class="tab" role="tab" data-tab="items" id="tab-items" aria-controls="items">持ち物</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="panel" id="day1" role="tabpanel" aria-labelledby="tab-day1">
+    <div class="phead"><div class="big">DAY<i>.</i>01</div><div class="meta"><b>10.09 FRI</b><span>大阪 → 北野・金閣寺 → 亀岡</span></div></div>
+    <p class="lead">時間はすべて目安。1日目はかなり歩きます。</p>
+    <ol class="tl" data-day="2026-10-09"></ol>
+  </section>
+
+  <section class="panel" id="day2" role="tabpanel" aria-labelledby="tab-day2">
+    <div class="phead"><div class="big">DAY<i>.</i>02</div><div class="meta"><b>10.10 SAT</b><span>亀岡 → 京都駅 → 大阪</span></div></div>
+    <p class="lead">素泊まりプラン。チェックアウトは11時まで。</p>
+    <ol class="tl" data-day="2026-10-10"></ol>
+  </section>
+
+  <section class="panel" id="stay" role="tabpanel" aria-labelledby="tab-stay">
+    <div class="phead"><div class="big">STAY<i>.</i></div><div class="meta"><b>HOTEL &amp; DINNER</b><span>1日目の夜</span></div></div>
+    <p class="lead">宿と焼肉の情報、キャンセル料。</p>
+    <div id="stayCards"></div>
+  </section>
+
+  <section class="panel" id="spots" role="tabpanel" aria-labelledby="tab-spots">
+    <div class="phead"><div class="big">SPOTS<i>.</i></div><div class="meta"><b>YORIMICHI</b><span>1日目に回る順</span></div></div>
+    <p class="lead">寄り道スポット。番号は回る順です。</p>
+    <div id="spotCards"></div>
+  </section>
+
+  <section class="panel" id="items" role="tabpanel" aria-labelledby="tab-items">
+    <div class="phead"><div class="big">ITEMS<i>.</i></div><div class="meta"><b>CHECKLIST</b><span>タップでチェック</span></div></div>
+    <div class="check-progress"><span class="count" id="checkCount">0</span><div class="bar"><i id="checkBar"></i></div></div>
+    <div id="checklists"></div>
+    <button class="reset" id="checkReset" type="button">チェックをすべて外す</button>
+  </section>
+
+  <footer class="footer">
+    <div class="nami" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#seigaiha)"/></svg></div>
+    <div class="section-title" id="emergency">EMERGENCY <span>緊急連絡先</span></div>
+    <div class="contacts" id="contacts"></div>
+
+    <div class="colophon">
+      <h2>PHOTO CREDITS</h2>
+      <p>写真は Wikimedia Commons より、各ライセンスに従って縮小して使用しています。</p>
+      <ul id="credits"></ul>
+      <p>営業時間・定休日は変わることがあります。出発前に公式情報で確認してください。</p>
+      <div class="endmark">
+        <div class="bc"><svg viewBox="0 0 60 34" aria-hidden="true"><g fill="currentColor"><rect x="0" width="2" height="34"/><rect x="4" width="1" height="34"/><rect x="7" width="3" height="34"/><rect x="12" width="1" height="34"/><rect x="15" width="2" height="34"/><rect x="19" width="1" height="34"/><rect x="22" width="3" height="34"/><rect x="27" width="1" height="34"/><rect x="30" width="2" height="34"/><rect x="34" width="1" height="34"/><rect x="37" width="3" height="34"/><rect x="42" width="2" height="34"/><rect x="46" width="1" height="34"/><rect x="49" width="3" height="34"/><rect x="54" width="1" height="34"/><rect x="57" width="3" height="34"/></g></svg><span>KYOTO SHIORI<br>VOL.01 ／ 2026</span></div>
+        <div class="fin">FIN.</div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<div class="dock" id="dock">
+  <div class="in">
+    <button class="info" id="dockInfo" type="button">
+      <span class="l1" id="dockL1">NEXT</span>
+      <span class="l2" id="dockL2">大阪駅に集合</span>
+    </button>
+    <a class="dbtn" id="dockMap" href="#" target="_blank" rel="noopener" aria-label="次の場所を地図で開く"><svg><use href="#i-pin"/></svg></a>
+    <a class="dbtn" id="dockRoute" href="#" target="_blank" rel="noopener" aria-label="次の場所への経路"><svg><use href="#i-train"/></svg></a>
+    <button class="dbtn shu" id="dockCall" type="button" aria-label="電話をかける"><svg><use href="#i-tel"/></svg></button>
+  </div>
+</div>
+
+<dialog class="sheet" id="callSheet" aria-labelledby="callTitle">
+  <div class="sheet-in">
+    <h2 id="callTitle">CALL ／ どこに電話する？</h2>
+    <div class="contacts" id="sheetContacts"></div>
+    <button class="btn close" type="button" id="callClose">閉じる</button>
+  </div>
+</dialog>
+
+<script>
+"use strict";
+/* ================= 設定（ここを書き換える） ================= */
+// 予約番号：公開ページのソースからは誰でも読めるので入れない（空なら「予約確認メールで確認」と表示）
+const RESERVATION_NO = "";
+// 亀岡のタクシー会社：番号が決まったら "0771-xx-xxxx" の形で入れる（空のままだと「あとで入れる」表示）
+const TAXI = { name: "亀岡のタクシー会社", tel: "" };
+
+/* ================= リンクを作る関数 ================= */
+const enc = encodeURIComponent;
+const mapUrl = q => `https://www.google.com/maps/search/?api=1&query=${enc(q)}`;
+const dirUrl = (from, to, mode = "transit", via) =>
+  `https://www.google.com/maps/dir/?api=1&origin=${enc(from)}&destination=${enc(to)}&travelmode=${mode}` + (via ? `&waypoints=${enc(via)}` : "");
+const telUrl = t => `tel:${t.replace(/[^0-9+]/g, "")}`;
+
+/* ================= 場所（名称＋住所。地図・経路の検索語） ================= */
+const P = {
+  osaka:     "JR大阪駅",
+  kyoto:     "JR京都駅",
+  emmachi:   "JR円町駅",
+  yokai:     "大将軍商店街 一条妖怪ストリート 京都市上京区",
+  kitano:    "北野天満宮 京都市上京区馬喰町",
+  toyouke:   "とようけ茶屋 京都市上京区今出川通御前西入ル紙屋川町822",
+  sawaya:    "粟餅所 澤屋 京都市上京区紙屋川町838-7",
+  busKitano: "北野天満宮前 バス停",
+  busKinkaku:"金閣寺道 バス停",
+  kinkaku:   "金閣寺（鹿苑寺） 京都市北区金閣寺町1",
+  kinukake:  "きぬかけの路 京都市",
+  ryoanji:   "龍安寺 京都市右京区龍安寺御陵ノ下町13",
+  myoshinji: "妙心寺 京都市右京区花園妙心寺町",
+  hanazono:  "JR花園駅 京都市右京区",
+  kameoka:   "JR亀岡駅",
+  aeon:      "イオン亀岡店",
+  hotel:     "6ishiki 京都府亀岡市大井町並河2-737",
+  hirayama:  "焼肉と精肉のひら山 京都府亀岡市千代川町高野林西田6-1",
+  namitsuka: "JR並河駅",
+  seigenin:  "西源院 龍安寺 京都市右京区龍安寺御陵ノ下町13",
+};
+
+/* ================= 写真 ================= */
+// photo: Wikimedia Commonsから取得して images/ に保存済み
+// slot : 自分の写真の差し替え口。images/<ファイル名> を置くと自動でそちらを表示（無ければイラスト）
+const CREDITS = [
+  { file:"kitano.jpg",   spot:"北野天満宮",   title:"Kitano-tenmangu Kyoto Japan29s3s4200.jpg", author:"663highland", lic:"CC BY 2.5", licUrl:"https://creativecommons.org/licenses/by/2.5/", src:"https://commons.wikimedia.org/wiki/File:Kitano-tenmangu_Kyoto_Japan29s3s4200.jpg" },
+  { file:"kinkaku.jpg",  spot:"金閣寺",       title:"Water reflection of Kinkaku-ji Temple a sunny day, Kyoto, Japan.jpg", author:"Basile Morin", lic:"CC BY-SA 4.0", licUrl:"https://creativecommons.org/licenses/by-sa/4.0/", src:"https://commons.wikimedia.org/wiki/File:Water_reflection_of_Kinkaku-ji_Temple_a_sunny_day,_Kyoto,_Japan.jpg" },
+  { file:"kinukake.jpg", spot:"きぬかけの路", title:"きぬかけの路 金閣寺から龍安寺まで区間.jpg", author:"Jxh1", lic:"CC BY-SA 4.0", licUrl:"https://creativecommons.org/licenses/by-sa/4.0/", src:"https://commons.wikimedia.org/wiki/File:%E3%81%8D%E3%81%AC%E3%81%8B%E3%81%91%E3%81%AE%E8%B7%AF_%E9%87%91%E9%96%A3%E5%AF%BA%E3%81%8B%E3%82%89%E9%BE%8D%E5%AE%89%E5%AF%BA%E3%81%BE%E3%81%A7%E5%8C%BA%E9%96%93.jpg" },
+  { file:"ryoanji.jpg",  spot:"龍安寺の石庭", title:"RyoanJi-Dry garden.jpg", author:"Stephane D'Alu", lic:"CC BY-SA 3.0", licUrl:"https://creativecommons.org/licenses/by-sa/3.0/", src:"https://commons.wikimedia.org/wiki/File:RyoanJi-Dry_garden.jpg" },
+];
+
+
+/* ================= スポットのカード ================= */
+const SPOTS = {
+  yokai: {
+    name:"一条妖怪ストリート", kana:"大将軍商店街", slot:"yokai.jpg",
+    desc:"円町から北野白梅町へ歩く途中の一条通沿い。店先に手づくりの妖怪が並ぶ商店街。通り道なので寄り道の時間はほとんどかからない。",
+    facts:[["場所","一条通（西大路通〜北野天満宮の南あたり）"]],
+    btns:[["map",P.yokai]],
+  },
+  kitano: {
+    name:"北野天満宮", photo:"kitano.jpg",
+    desc:"学問の神様・菅原道真公をまつる天満宮。北野白梅町から徒歩約5分。",
+    facts:[["住所","京都市上京区馬喰町"],["アクセス","北野白梅町から徒歩約5分"]],
+    btns:[["map",P.kitano],["web","https://kitanotenmangu.or.jp/","公式サイト"]],
+  },
+  toyouke: {
+    name:"とようけ茶屋", slot:"toyouke.jpg",
+    desc:"豆腐屋「とようけ屋山本」の豆腐料理の店。名物は生ゆば丼ととようけ丼。売り切れたら閉店なので開店すぐに。",
+    facts:[["住所","京都市上京区今出川通御前西入ル紙屋川町822"],["営業","飲食 11:00〜14:30（L.O. 14:00）"],["定休","木曜・金曜（25日と祝日は営業）※公式サイトより"]],
+    tag:"今回は見送り",
+    alert:"公式サイトでは<b>金曜が定休日</b>のため、10/9（金）は見送り。昼ごはんは西源院に変更しました。",
+    btns:[["map",P.toyouke],["web","http://www.toyoukeya.co.jp/","公式（とようけ屋山本）"]],
+  },
+  sawaya: {
+    name:"粟餅所 澤屋", kana:"あわもちどころ さわや", slot:"sawaya.jpg",
+    desc:"注文を受けてからつくる、つきたての粟餅。「紅梅」は3個600円でお茶付き。",
+    facts:[["住所","京都市上京区紙屋川町838-7"],["電話","075-461-4517"],["営業","9:00〜17:00"],["定休","水曜・木曜"]],
+    btns:[["map",P.sawaya],["tel","075-461-4517","澤屋"]],
+  },
+  kinkaku: {
+    name:"金閣寺", kana:"鹿苑寺", photo:"kinkaku.jpg",
+    desc:"鏡湖池に映る金色の舎利殿。市バス「金閣寺道」から歩いてすぐ。",
+    facts:[["バス","204・205系統「金閣寺道」下車"]],
+    btns:[["map",P.kinkaku],["web","https://www.shokoku-ji.jp/kinkakuji/","公式サイト"]],
+  },
+  kinukake: {
+    name:"きぬかけの路", photo:"kinukake.jpg",
+    desc:"金閣寺から龍安寺・仁和寺へ続く山すその道。龍安寺までは歩いて約20分。",
+    btns:[["map",P.kinukake]],
+  },
+  ryoanji: {
+    name:"龍安寺", kana:"石庭", photo:"ryoanji.jpg",
+    desc:"油土塀に囲まれた、白砂と15の石だけの枯山水。縁側に座ってゆっくり眺めたい。",
+    facts:[["住所","京都市右京区龍安寺御陵ノ下町13"],["拝観料","大人600円"]],
+    btns:[["map",P.ryoanji],["web","http://www.ryoanji.jp/","公式サイト"]],
+  },
+  seigenin: {
+    name:"西源院", kana:"せいげんいん", slot:"seigenin.jpg", tag:"昼ごはん",
+    desc:"龍安寺の境内にある湯豆腐の店。庭を眺めながら、七草湯豆腐をいただける。",
+    facts:[["場所","龍安寺の境内"],["電話","075-462-4742"],["営業","11:00〜15:00（L.O. 14:45）"],["定休","水曜・木曜"]],
+    alert:"17時から焼肉なので、食べすぎ注意。",
+    btns:[["map",P.seigenin],["tel","075-462-4742","お店"]],
+  },
+};
+const SPOT_ORDER = ["yokai","kitano","sawaya","kinkaku","ryoanji","seigenin","toyouke"];
+
+/* ================= タイムライン ================= */
+// t: 並べ替え・ハイライト用の時刻（目安） / label: 画面に出す時刻
+const DAYS = {
+  "2026-10-09": [
+    { t:"09:00", title:"大阪駅に集合", memo:"JR新快速で京都駅へ（約30分）", kind:"move", btns:[["route",P.osaka,P.kyoto,"transit"],["map",P.osaka]] },
+    { t:"09:40", title:"京都駅 → 円町", memo:"JR嵯峨野線", kind:"move", btns:[["route",P.kyoto,P.emmachi,"transit"]] },
+    { t:"10:00", title:"円町から北野白梅町へ歩く", memo:"約15分。途中で一条妖怪ストリートに寄る", kind:"move", spot:"yokai", btns:[["route",P.emmachi,P.kitano,"walking",P.yokai,"経路（徒歩）"]] },
+    { t:"10:30", title:"北野天満宮に参拝", spot:"kitano" },
+    { t:"11:00", title:"甘味：粟餅所 澤屋", memo:"昼ごはんが13時台になるので、ここで小腹を満たしておく", spot:"sawaya", btns:[["route",P.kitano,P.sawaya,"walking",null,"経路（徒歩）"]] },
+    { t:"11:30", title:"市バスで金閣寺へ", memo:"204系統・205系統「金閣寺道」下車", kind:"move", btns:[["route",P.busKitano,P.busKinkaku,"transit",null,"経路（バス）"]] },
+    { t:"12:00", title:"金閣寺", spot:"kinkaku", btns:[["route",P.busKinkaku,P.kinkaku,"walking",null,"バス停から（徒歩）"]] },
+    { t:"12:50", title:"きぬかけの路を歩いて龍安寺へ", memo:"約20分", kind:"move", spot:"kinukake", btns:[["route",P.kinkaku,P.ryoanji,"walking",null,"経路（徒歩）"]] },
+    { t:"13:10", title:"龍安寺（石庭）", spot:"ryoanji" },
+    { t:"13:40", title:"昼ごはん：西源院（湯豆腐）", memo:"龍安寺の境内。ラストオーダー 14:45", spot:"seigenin" },
+    { t:"15:00", title:"妙心寺を抜けてJR花園駅へ → 亀岡駅", memo:"花園駅まで徒歩約20分、嵯峨野線で亀岡へ。円町には戻らない", kind:"move", btns:[["route",P.ryoanji,P.hanazono,"walking",P.myoshinji,"花園駅まで（徒歩）"],["route",P.hanazono,P.kameoka,"transit",null,"亀岡駅まで（電車）"]] },
+    { t:"15:30", title:"亀岡駅前で買い出し", memo:"オロポ用のオロナミンCとポカリ、お酒、翌朝の朝ごはん（氷も）。駅周辺にイオン亀岡店あり", btns:[["map",P.aeon,"イオン亀岡店"],["tab","items","買い出しメモ"]] },
+    { t:"15:50", title:"タクシーで宿へ", memo:"約6分", kind:"move", btns:[["route",P.kameoka,P.hotel,"driving",null,"経路（車）"],["taxi"]] },
+    { t:"16:00", title:"6ishiki にチェックイン", memo:"チェックインは最終18時", btns:[["map",P.hotel],["tel","0771-55-9285","宿"],["tab","stay","宿の詳細"]] },
+    { t:"16:45", title:"タクシーで焼肉へ", memo:"帰りのタクシーも先に手配しておく", kind:"move", btns:[["route",P.hotel,P.hirayama,"driving",null,"経路（車）"],["taxi"]] },
+    { t:"17:00", title:"焼肉と精肉のひら山", memo:"2名で予約済み", btns:[["map",P.hirayama],["tel","0771-29-4148","お店"],["web","https://tabelog.com/kyoto/A2608/A260801/26013389/","食べログ"]] },
+    { t:"19:15", title:"宿に戻る → サウナ → オロポ → 部屋飲み", alert:"<b>サウナは22時〜翌5時は使えない。</b>21:45には終える。お酒はサウナのあと。", btns:[["route",P.hirayama,P.hotel,"driving",null,"宿へ（車）"],["taxi"],["tel","0771-55-9285","宿"]] },
+  ],
+  "2026-10-10": [
+    { t:"05:00", label:"5:00〜", title:"朝サウナ", memo:"使いたい人だけ" },
+    { t:"07:00", label:"朝", title:"朝ごはん", memo:"買っておいたもの（素泊まりプラン）" },
+    { t:"11:00", title:"チェックアウト → JR並河駅へ", memo:"徒歩約10分", kind:"move", btns:[["route",P.hotel,P.namitsuka,"walking",null,"経路（徒歩）"]] },
+    { t:"11:30", title:"並河駅 → 京都駅", memo:"JR嵯峨野線", kind:"move", btns:[["route",P.namitsuka,P.kyoto,"transit"]] },
+    { t:"12:00", label:"12:00〜", title:"京都駅周辺を観光", memo:"内容は未定", free:true, btns:[["map",P.kyoto]] },
+    { t:"17:00", label:"夕方", title:"大阪へ帰る", kind:"move", btns:[["route",P.kyoto,P.osaka,"transit"]] },
+  ],
+};
+
+/* ================= 持ち物 ================= */
+const CHECKS = [
+  { en:"BAG", title:"持ち物", items:[
+    ["ic","ICOCA などの交通系ICカード"],
+    ["charger","スマホの充電器とモバイルバッテリー"],
+    ["clothes","着替え（1泊分）"],
+    ["sauna","サウナで使うもの","サウナハットなど、使う人だけ"],
+    ["shoes","歩きやすい靴","1日目はかなり歩く"],
+  ]},
+  { en:"SHOPPING", title:"買い出しメモ（亀岡駅前）", items:[
+    ["oronamin","オロナミンC","オロポ用"],
+    ["pocari","ポカリスエット","オロポ用"],
+    ["sake","お酒"],
+    ["breakfast","翌朝の朝ごはん"],
+    ["ice","氷"],
+  ]},
+];
+
+/* ================= 連絡先 ================= */
+const CONTACTS = [
+  { name:"宿：6ishiki", note:"チェックイン 16:00〜18:00", tel:"0771-55-9285" },
+  { name:"焼肉：ひら山", note:"10/9 17:00〜 2名", tel:"0771-29-4148" },
+  { name:TAXI.name, note:"焼肉の行き帰りは事前に", tel:TAXI.tel },
+];
+
+/* ================= 描画 ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+const ic = n => `<svg aria-hidden="true"><use href="#i-${n}"/></svg>`;
+function btnHtml(b) {
+  const [type, ...a] = b;
+  if (type === "map")   return `<a class="btn" href="${mapUrl(a[0])}" target="_blank" rel="noopener">${ic("pin")}${esc(a[1] || "地図")}</a>`;
+  if (type === "route") return `<a class="btn fill" href="${dirUrl(a[0], a[1], a[2], a[3])}" target="_blank" rel="noopener">${ic(a[2] === "walking" ? "walk" : a[2] === "driving" ? "car" : "train")}${esc(a[4] || "経路")}</a>`;
+  if (type === "tel")   return `<a class="btn" href="${telUrl(a[0])}" aria-label="${esc(a[1] || "")}に電話 ${esc(a[0])}">${ic("tel")}${esc(a[1] ? a[1] + "に" : "")}電話</a>`;
+  if (type === "web")   return `<a class="btn" href="${a[0]}" target="_blank" rel="noopener">${ic("link")}${esc(a[1] || "公式")}</a>`;
+  if (type === "mail")  return `<a class="btn" href="mailto:${a[0]}">${ic("mail")}メール</a>`;
+  if (type === "tab")   return `<button class="btn" type="button" data-goto="${a[0]}">${ic("page")}${esc(a[1])}</button>`;
+  if (type === "taxi")  return TAXI.tel
+      ? `<a class="btn shu" href="${telUrl(TAXI.tel)}">${ic("taxi")}タクシーを呼ぶ</a>`
+      : `<a class="btn" aria-disabled="true">${ic("taxi")}タクシー未登録</a>`;
+  return "";
+}
+const btnsHtml = list => list && list.length ? `<div class="btns">${list.map(btnHtml).join("")}</div>` : "";
+
+function photoHtml(s) {
+  if (s.photo) {
+    return `<div class="ph"><img src="images/${s.photo}" alt="${esc(s.name)}の写真" loading="lazy" decoding="async"></div>`;
+  }
+  return `<div class="ph"><img src="images/${s.slot}" alt="${esc(s.name)}のイラスト" loading="lazy" decoding="async"></div>`;
+}
+
+function cardHtml(id, opt = {}) {
+  const s = SPOTS[id];
+  const n = opt.num ? `<span class="num">No.${String(opt.num).padStart(2, "0")}</span>` : "";
+  const kana = s.kana && !s.tag ? `<span class="kana">${esc(s.kana)}</span>` : "";
+  const tag = s.tag ? `<span class="tag">${esc(s.tag)}</span>` : "";
+  const facts = !opt.compact && s.facts ? `<ul class="facts">${s.facts.map(([k,v]) => `<li><b>${k}</b><span>${esc(v)}</span></li>`).join("")}</ul>` : "";
+  const alert = s.alert ? `<p class="alert">${s.alert}</p>` : "";
+  const desc = opt.compact ? "" : `<p class="desc">${esc(s.desc)}</p>`;
+  const btns = opt.compact ? (s.btns || []).filter(b => b[0] !== "map" || !opt.hideMap) : s.btns;
+  const head = opt.compact ? "" : `${n}<h3>${esc(s.name)}${kana}${tag}</h3>`;
+  return `<article class="card" id="${opt.compact ? "" : "spot-" + id}">${photoHtml(s)}<div class="cb">${head}${desc}${facts}${alert}${btnsHtml(btns)}</div></article>`;
+}
+
+function renderTimelines() {
+  document.querySelectorAll(".tl").forEach(ol => {
+    const day = ol.dataset.day;
+    ol.innerHTML = DAYS[day].map((it, i) => {
+      const [h, m] = it.t.split(":");
+      const label = it.label || `${h}:${m}`;
+      let body = `<h3>${esc(it.title)}</h3>`;
+      if (it.memo) body += `<p class="memo">${esc(it.memo)}</p>`;
+      if (it.alert) body += `<p class="alert">${it.alert}</p>`;
+      if (it.free) body += `<div class="free"><label for="freeMemo">ここは空き枠。行きたい所をメモ（この端末に保存）</label><textarea id="freeMemo" placeholder="例）京都タワー、伊勢丹の地下でおみやげ、ポルタで昼ごはん…"></textarea></div>`;
+      body += btnsHtml(it.btns);
+      if (it.spot) body += cardHtml(it.spot, { compact: true });
+      return `<li class="tl-item${it.kind === "move" ? " kind-move" : ""}" id="i-${day}-${i}" data-t="${it.t}">
+        <div class="tl-time${/^[0-9]/.test(label) ? "" : " ja"}">${label}</div><div class="tl-dot"></div><div class="tl-body">${body}</div></li>`;
+    }).join("");
+  });
+}
+
+function renderSpots() {
+  $("#spotCards").innerHTML = SPOT_ORDER.map((id, i) => cardHtml(id, { num: id === "toyouke" ? "" : i + 1 })).join("");
+}
+
+function renderStay() {
+  const hotelArt = `<div class="ph"><img src="images/hotel.jpg" alt="宿のイラスト" loading="lazy" decoding="async"></div>`;
+  const yakiArt = `<div class="ph"><img src="images/yakiniku.jpg" alt="焼肉のイラスト" loading="lazy" decoding="async"></div>`;
+  // キャンセル料（宿泊日 10/9 から逆算）
+  const stayDay = new Date(2026, 9, 9);
+  const tiers = [[14,"30%"],[7,"40%"],[5,"50%"],[3,"60%"],[2,"70%"],[1,"80%"],[0,"100%"]];
+  const today = nowDate(); today.setHours(0,0,0,0);
+  const daysLeft = Math.round((stayDay - today) / 864e5);
+  // いま該当する段（残り日数以上で最も近い段）。14日より前・宿泊後は該当なし
+  const current = daysLeft >= 0 ? tiers.filter(([d]) => d >= daysLeft).pop() : null;
+  const rows = tiers.map(([d, pct]) => {
+    const dt = new Date(stayDay); dt.setDate(dt.getDate() - d);
+    const lbl = d === 0 ? "当日・不泊" : d === 1 ? "前日" : `${d}日前`;
+    const here = current && current[0] === d ? " class=\"here\"" : "";
+    return `<tr${here}><td>${lbl}</td><td>${dt.getMonth()+1}/${dt.getDate()}〜</td><td>${pct}</td></tr>`;
+  }).join("");
+
+  $("#stayCards").innerHTML = `
+  <article class="card" id="hotel">${hotelArt}<div class="cb">
+    <h3>6ishiki<span class="kana">ロクイシキ</span></h3>
+    <p class="desc">アートとサウナの宿。本館「Tsuchikabe」を一棟貸し、素泊まり。</p>
+    <ul class="facts">
+      <li><b>住所</b><span>京都府亀岡市大井町並河2-737</span></li>
+      <li><b>電話</b><span>0771-55-9285</span></li>
+      <li><b>メール</b><span>6ishiki.hotel@gmail.com</span></li>
+      <li><b>アクセス</b><span>JR並河駅から徒歩10分／JR亀岡駅からタクシー約6分</span></li>
+      <li><b>IN / OUT</b><span>チェックイン 16:00〜18:00（最終18時）／チェックアウト 〜11:00</span></li>
+      <li><b>支払い</b><span>57,660円（オンラインでカード決済済み）</span></li>
+    </ul>
+    <p class="alert"><b>サウナは22時〜翌5時は使用不可。</b>古民家を改装した建物なので物音に気をつける。</p>
+    ${btnsHtml([["map",P.hotel],["tel","0771-55-9285","宿"],["mail","6ishiki.hotel@gmail.com"],["route",P.kameoka,P.hotel,"driving",null,"亀岡駅から"],["route",P.namitsuka,P.hotel,"walking",null,"並河駅から"]])}
+    <div class="section-title">CANCEL <span>キャンセル料</span></div>
+    <table class="cancel"><thead><tr><th>いつから</th><th>日付</th><th>料金</th></tr></thead><tbody>${rows}</tbody></table>
+  </div></article>
+
+  <article class="card" id="yakiniku">${yakiArt}<div class="cb">
+    <h3>焼肉と精肉のひら山</h3>
+    <p class="desc"><b>10/9（金）17:00〜　2名で予約済み</b></p>
+    <ul class="facts">
+      <li><b>住所</b><span>京都府亀岡市千代川町高野林西田6-1</span></li>
+      <li><b>電話</b><span>0771-29-4148</span></li>
+      <li><b>行き帰り</b><span>タクシー。帰りの分も先に手配しておく</span></li>
+    </ul>
+    ${btnsHtml([["map",P.hirayama],["tel","0771-29-4148","お店"],["web","https://tabelog.com/kyoto/A2608/A260801/26013389/","食べログ"],["route",P.hotel,P.hirayama,"driving",null,"宿から"],["taxi"]])}
+  </div></article>`;
+}
+
+function renderChecks() {
+  const KEY = "shiori-checks-v1";
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+  $("#checklists").innerHTML = CHECKS.map(g => `<div class="section-title">${g.en} <span>${esc(g.title)}</span></div><ul class="checklist">${
+    g.items.map(([id, label, note]) => `<li><label><input type="checkbox" data-id="${id}"${saved[id] ? " checked" : ""}><span>${esc(label)}${note ? `<small>${esc(note)}</small>` : ""}</span></label></li>`).join("")
+  }</ul>`).join("");
+  const boxes = [...document.querySelectorAll("#checklists input")];
+  const update = () => {
+    const done = boxes.filter(b => b.checked).length;
+    $("#checkCount").innerHTML = `${done}<small> / ${boxes.length}</small>`;
+    $("#checkBar").style.width = `${(done / boxes.length) * 100}%`;
+  };
+  const save = () => {
+    const o = {}; boxes.forEach(b => { if (b.checked) o[b.dataset.id] = 1; });
+    try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {}
+    update();
+  };
+  boxes.forEach(b => b.addEventListener("change", save));
+  let armed = false;
+  $("#checkReset").addEventListener("click", e => {
+    if (!armed) { armed = true; e.target.textContent = "もう一度押すと、すべて外します"; setTimeout(() => { armed = false; e.target.textContent = "チェックをすべて外す"; }, 3000); return; }
+    boxes.forEach(b => b.checked = false); save(); armed = false; e.target.textContent = "チェックをすべて外す";
+  });
+  update();
+}
+
+function contactHtml(c) {
+  if (!c.tel) return `<div class="contact empty"><span class="ic">${ic("taxi")}</span><span class="who">${esc(c.name)}<small>${esc(c.note)}</small></span><span class="tel">番号を<br>あとで入れる</span></div>`;
+  return `<a class="contact" href="${telUrl(c.tel)}"><span class="ic">${ic("tel")}</span><span class="who">${esc(c.name)}<small>${esc(c.note)}</small></span><span class="tel">${esc(c.tel)}</span></a>`;
+}
+function renderContacts() {
+  const html = CONTACTS.map(contactHtml).join("");
+  $("#contacts").innerHTML = html;
+  $("#sheetContacts").innerHTML = html;
+}
+
+function renderCredits() {
+  $("#credits").innerHTML = CREDITS.map(c =>
+    `<li>${esc(c.spot)}：「${esc(c.title)}」 撮影 ${esc(c.author)} ／ <a href="${c.licUrl}" target="_blank" rel="noopener">${esc(c.lic)}</a> ／ <a href="${c.src}" target="_blank" rel="noopener">Wikimedia Commons</a></li>`
+  ).join("") + `<li>表紙と、宿・焼肉・甘味処などのイラストは、このしおり用に画像生成AIで作成したものです。</li>`;
+}
+
+
+/* ================= 時刻とハイライト ================= */
+// テスト用：?now=2026-10-09T13:20 で当日の表示を再現できる
+function nowDate() {
+  const q = new URLSearchParams(location.search).get("now");
+  const d = q ? new Date(q) : new Date();
+  return isNaN(d) ? new Date() : d;
+}
+const ymd = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const toMin = t => { const [h, m] = t.split(":"); return +h * 60 + +m; };
+
+let activeDay = null;
+function updateNow() {
+  const now = nowDate();
+  const day = ymd(now);
+  const mins = now.getHours() * 60 + now.getMinutes();
+  document.querySelectorAll(".tl-item").forEach(li => { li.classList.remove("is-now","is-next","past"); li.querySelector(".badge")?.remove(); });
+  document.querySelectorAll(".tab .today").forEach(e => e.remove());
+
+  // カウントダウン
+  const start = new Date(2026, 9, 9);
+  const t0 = new Date(now); t0.setHours(0,0,0,0);
+  const left = Math.round((start - t0) / 864e5);
+  const cd = $("#countdown");
+  if (left > 0) { cd.hidden = false; cd.innerHTML = `${left}<small>DAYS TO GO</small>`; } else cd.hidden = true;
+
+  const items = DAYS[day];
+  if (!items) { activeDay = null; setDock(null, null, left); return; }
+  activeDay = day;
+  const tabId = day === "2026-10-09" ? "day1" : "day2";
+  $(`#tab-${tabId}`).insertAdjacentHTML("beforeend", `<span class="today" aria-label="今日"></span>`);
+
+  let cur = -1;
+  items.forEach((it, i) => { if (toMin(it.t) <= mins) cur = i; });
+  const nxt = cur + 1 < items.length ? cur + 1 : -1;
+  items.forEach((it, i) => { if (i < cur) $(`#i-${day}-${i}`).classList.add("past"); });
+  if (cur >= 0) { const el = $(`#i-${day}-${cur}`); el.classList.add("is-now"); el.querySelector("h3").insertAdjacentHTML("beforeend", `<span class="badge now">いま</span>`); }
+  if (nxt >= 0) { const el = $(`#i-${day}-${nxt}`); el.classList.add("is-next"); el.querySelector("h3").insertAdjacentHTML("beforeend", `<span class="badge next">つぎ</span>`); }
+  setDock(cur >= 0 ? [day, cur] : null, nxt >= 0 ? [day, nxt] : null, left);
+}
+
+// 各項目の「行き先」：地図と経路に使う
+function placeOf(it) {
+  const r = (it.btns || []).find(b => b[0] === "route");
+  const m = (it.btns || []).find(b => b[0] === "map");
+  const sp = it.spot && SPOTS[it.spot] && (SPOTS[it.spot].btns || []).find(b => b[0] === "map");
+  const dest = r ? r[2] : m ? m[1] : sp ? sp[1] : null;
+  return { dest, route: r ? dirUrl(r[1], r[2], r[3], r[4]) : dest ? dirUrl("現在地", dest, "transit") : null };
+}
+
+let dockTarget = null;
+function setDock(cur, nxt, left) {
+  const L1 = $("#dockL1"), L2 = $("#dockL2"), map = $("#dockMap"), route = $("#dockRoute");
+  let target = nxt || cur;
+  if (!target) {
+    // 旅行日以外：1日目の最初を出す
+    target = left > 0 ? ["2026-10-09", 0] : null;
+    L1.innerHTML = left > 0 ? `FIRST<em>出発まであと${left}日</em>` : "FIN.";
+    L2.innerHTML = left > 0 ? `<span class="t">10.09</span>9:00 大阪駅に集合` : "楽しい旅でした";
+  } else {
+    const [d, i] = target, it = DAYS[d][i];
+    const label = it.label || it.t;
+    const curIt = cur ? DAYS[cur[0]][cur[1]] : null;
+    L1.innerHTML = nxt ? `NEXT${curIt ? `<em>いま：${esc(curIt.title)}</em>` : ""}` : "NOW";
+    L2.innerHTML = `<span class="t">${esc(label)}</span>${esc(it.title)}`;
+  }
+  dockTarget = target;
+  const it = target ? DAYS[target[0]][target[1]] : null;
+  const pl = it ? placeOf(it) : {};
+  const setA = (a, href) => { if (href) { a.href = href; a.removeAttribute("aria-disabled"); } else { a.removeAttribute("href"); a.setAttribute("aria-disabled","true"); } };
+  setA(map, pl.dest ? mapUrl(pl.dest) : null);
+  setA(route, pl.route || null);
+}
+
+/* ================= タブ ================= */
+const TAB_KEY = "shiori-tab";
+function showTab(id, scroll) {
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === id)));
+  document.querySelectorAll(".panel").forEach(p => p.classList.toggle("active", p.id === id));
+  try { localStorage.setItem(TAB_KEY, id); } catch (e) {}
+  if (scroll) {
+    const tabsTop = $(".tabs").offsetTop;
+    if (window.scrollY > tabsTop) window.scrollTo({ top: tabsTop, behavior: "instant" in window ? "instant" : "auto" });
+  }
+}
+
+function init() {
+  renderTimelines(); renderSpots(); renderStay(); renderChecks(); renderContacts(); renderCredits();
+
+  // 予約番号（タップで表示／もう一度で伏せる）
+  const rb = $("#reserve");
+  rb.addEventListener("click", () => {
+    const on = rb.getAttribute("aria-pressed") !== "true";
+    rb.setAttribute("aria-pressed", String(on));
+    $("#reserveVal").textContent = on ? (RESERVATION_NO || "予約確認メールを見てね") : "●●●●●●●●";
+    $("#reserveHint").textContent = on ? "タップで隠す" : "タップで表示";
+  });
+
+  // 空き枠メモ
+  const fm = $("#freeMemo");
+  if (fm) {
+    try { fm.value = localStorage.getItem("shiori-free-memo") || ""; } catch (e) {}
+    fm.addEventListener("input", () => { try { localStorage.setItem("shiori-free-memo", fm.value); } catch (e) {} });
+  }
+
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => showTab(t.dataset.tab, true)));
+  document.addEventListener("click", e => {
+    const g = e.target.closest("[data-goto]");
+    if (g) { showTab(g.dataset.goto, true); }
+  });
+
+  updateNow();
+  // 旅行当日はその日のタブを開いて「いま」までスクロール。それ以外は前回のタブ
+  let first = "day1";
+  try { first = localStorage.getItem(TAB_KEY) || "day1"; } catch (e) {}
+  if (activeDay) first = activeDay === "2026-10-09" ? "day1" : "day2";
+  showTab(first, false);
+  if (activeDay) {
+    const el = document.querySelector(".tl-item.is-now") || document.querySelector(".tl-item.is-next");
+    if (el) setTimeout(() => el.scrollIntoView({ block: "start" }), 60);
+  }
+  setInterval(updateNow, 60 * 1000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) updateNow(); });
+
+  // ドック
+  $("#dockInfo").addEventListener("click", () => {
+    if (!dockTarget) return;
+    const [d, i] = dockTarget;
+    showTab(d === "2026-10-09" ? "day1" : "day2", false);
+    $(`#i-${d}-${i}`).scrollIntoView({ block: "start", behavior: "smooth" });
+  });
+  const sheet = $("#callSheet");
+  $("#dockCall").addEventListener("click", () => sheet.showModal ? sheet.showModal() : location.hash = "emergency");
+  $("#callClose").addEventListener("click", () => sheet.close());
+  sheet.addEventListener("click", e => { if (e.target === sheet) sheet.close(); });
+}
+init();
+
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+</script>
+</body>
+</html>
