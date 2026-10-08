@@ -379,7 +379,7 @@ dialog.sheet .close{margin-top:12px;width:100%}
   <div class="in">
     <button class="info" id="dockInfo" type="button">
       <span class="l1" id="dockL1">NEXT</span>
-      <span class="l2" id="dockL2">大阪駅に集合</span>
+      <span class="l2" id="dockL2">大阪駅を出発</span>
     </button>
     <a class="dbtn" id="dockMap" href="#" target="_blank" rel="noopener" aria-label="次の場所を地図で開く"><svg><use href="#i-pin"/></svg></a>
     <a class="dbtn" id="dockRoute" href="#" target="_blank" rel="noopener" aria-label="次の場所への経路"><svg><use href="#i-train"/></svg></a>
@@ -504,20 +504,20 @@ const SPOT_ORDER = ["yokai","kitano","sawaya","kinkaku","ryoanji","seigenin","to
 // t: 並べ替え・ハイライト用の時刻（目安） / label: 画面に出す時刻
 const DAYS = {
   "2026-10-09": [
-    { t:"09:00", title:"大阪駅に集合", memo:"JR新快速で京都駅へ（約30分）", kind:"move", btns:[["route",P.osaka,P.kyoto,"transit"],["map",P.osaka]] },
-    { t:"09:40", title:"京都駅 → 円町", memo:"JR嵯峨野線", kind:"move", btns:[["route",P.kyoto,P.emmachi,"transit"]] },
-    { t:"10:00", title:"円町から北野白梅町へ歩く", memo:"約15分。途中で一条妖怪ストリートに寄る", kind:"move", spot:"yokai", btns:[["route",P.emmachi,P.kitano,"walking",P.yokai,"経路（徒歩）"]] },
-    { t:"10:30", title:"北野天満宮に参拝", spot:"kitano" },
-    { t:"11:00", title:"甘味：粟餅所 澤屋", memo:"昼ごはんが13時台になるので、ここで小腹を満たしておく", spot:"sawaya", btns:[["route",P.kitano,P.sawaya,"walking",null,"経路（徒歩）"]] },
-    { t:"11:30", title:"市バスで金閣寺へ", memo:"204系統・205系統「金閣寺道」下車", kind:"move", btns:[["route",P.busKitano,P.busKinkaku,"transit",null,"経路（バス）"]] },
-    { t:"12:00", title:"金閣寺", spot:"kinkaku", btns:[["route",P.busKinkaku,P.kinkaku,"walking",null,"バス停から（徒歩）"]] },
-    { t:"12:50", title:"きぬかけの路を歩いて龍安寺へ", memo:"約20分", kind:"move", spot:"kinukake", btns:[["route",P.kinkaku,P.ryoanji,"walking",null,"経路（徒歩）"]] },
-    { t:"13:10", title:"龍安寺（石庭）", spot:"ryoanji" },
-    { t:"13:40", title:"昼ごはん：西源院（湯豆腐）", memo:"龍安寺の境内。ラストオーダー 14:45", spot:"seigenin" },
-    { t:"15:00", title:"妙心寺を抜けてJR花園駅へ → 亀岡駅", memo:"花園駅まで徒歩約20分、嵯峨野線で亀岡へ。円町には戻らない", kind:"move", btns:[["route",P.ryoanji,P.hanazono,"walking",P.myoshinji,"花園駅まで（徒歩）"],["route",P.hanazono,P.kameoka,"transit",null,"亀岡駅まで（電車）"]] },
-    { t:"15:30", title:"亀岡駅前で買い出し", memo:"オロポ用のオロナミンCとポカリ、お酒、翌朝の朝ごはん（氷も）。駅周辺にイオン亀岡店あり", btns:[["map",P.aeon,"イオン亀岡店"],["tab","items","買い出しメモ"]] },
-    { t:"15:50", title:"タクシーで宿へ", memo:"約6分", kind:"move", btns:[["route",P.kameoka,P.hotel,"driving",null,"経路（車）"],["taxi"]] },
-    { t:"16:00", title:"6ishiki にチェックイン", memo:"チェックインは最終18時", btns:[["map",P.hotel],["tel","0771-55-9285","宿"],["tab","stay","宿の詳細"]] },
+    { t:"10:00", title:"大阪駅を出発", memo:"JR京都線 新快速（草津行）8番線から。京都駅 10:29着", kind:"move", btns:[["route",P.osaka,P.kyoto,"transit"],["map",P.osaka]] },
+    { t:"10:42", title:"京都駅 → 円町", memo:"JR嵯峨野線（亀岡行・京都駅始発）33番線から。円町 10:51着。乗換は13分", kind:"move", btns:[["route",P.kyoto,P.emmachi,"transit"]] },
+    { t:"10:51", title:"円町から北野白梅町へ歩く", memo:"約15分。途中で一条妖怪ストリートに寄る", kind:"move", spot:"yokai", btns:[["route",P.emmachi,P.kitano,"walking",P.yokai,"経路（徒歩）"]] },
+    { t:"11:15", title:"北野天満宮に参拝", spot:"kitano" },
+    { t:"11:45", title:"甘味：粟餅所 澤屋", memo:"昼ごはんが14時すぎになるので、ここで小腹を満たしておく", spot:"sawaya", btns:[["route",P.kitano,P.sawaya,"walking",null,"経路（徒歩）"]] },
+    { t:"12:10", title:"市バスで金閣寺へ", memo:"204系統・205系統「金閣寺道」下車", kind:"move", btns:[["route",P.busKitano,P.busKinkaku,"transit",null,"経路（バス）"]] },
+    { t:"12:35", title:"金閣寺", spot:"kinkaku", btns:[["route",P.busKinkaku,P.kinkaku,"walking",null,"バス停から（徒歩）"]] },
+    { t:"13:20", title:"きぬかけの路を歩いて龍安寺へ", memo:"約20分", kind:"move", spot:"kinukake", btns:[["route",P.kinkaku,P.ryoanji,"walking",null,"経路（徒歩）"]] },
+    { t:"13:40", title:"龍安寺（石庭）", spot:"ryoanji" },
+    { t:"14:05", title:"昼ごはん：西源院（湯豆腐）", memo:"龍安寺の境内。ラストオーダー 14:45", spot:"seigenin" },
+    { t:"15:15", title:"妙心寺を抜けてJR花園駅へ → 亀岡駅", memo:"花園駅まで徒歩約20分、嵯峨野線で亀岡へ。円町には戻らない", kind:"move", btns:[["route",P.ryoanji,P.hanazono,"walking",P.myoshinji,"花園駅まで（徒歩）"],["route",P.hanazono,P.kameoka,"transit",null,"亀岡駅まで（電車）"]] },
+    { t:"15:45", title:"亀岡駅前で買い出し", memo:"オロポ用のオロナミンCとポカリ、お酒、翌朝の朝ごはん（氷も）。駅周辺にイオン亀岡店あり", btns:[["map",P.aeon,"イオン亀岡店"],["tab","items","買い出しメモ"]] },
+    { t:"16:05", title:"タクシーで宿へ", memo:"約6分", kind:"move", btns:[["route",P.kameoka,P.hotel,"driving",null,"経路（車）"],["taxi"]] },
+    { t:"16:15", title:"6ishiki にチェックイン", memo:"チェックインは最終18時", btns:[["map",P.hotel],["tel","0771-55-9285","宿"],["tab","stay","宿の詳細"]] },
     { t:"16:45", title:"タクシーで焼肉へ", memo:"帰りのタクシーも先に手配しておく", kind:"move", btns:[["route",P.hotel,P.hirayama,"driving",null,"経路（車）"],["taxi"]] },
     { t:"17:00", title:"焼肉と精肉のひら山", memo:"2名で予約済み", btns:[["map",P.hirayama],["tel","0771-29-4148","お店"],["web","https://tabelog.com/kyoto/A2608/A260801/26013389/","食べログ"]] },
     { t:"19:15", title:"宿に戻る → サウナ → オロポ → 部屋飲み", alert:"<b>サウナは22時〜翌5時は使えない。</b>21:45には終える。お酒はサウナのあと。", btns:[["route",P.hirayama,P.hotel,"driving",null,"宿へ（車）"],["taxi"],["tel","0771-55-9285","宿"]] },
@@ -767,7 +767,7 @@ function setDock(cur, nxt, left) {
     // 旅行日以外：1日目の最初を出す
     target = left > 0 ? ["2026-10-09", 0] : null;
     L1.innerHTML = left > 0 ? `FIRST<em>出発まであと${left}日</em>` : "FIN.";
-    L2.innerHTML = left > 0 ? `<span class="t">10.09</span>9:00 大阪駅に集合` : "楽しい旅でした";
+    L2.innerHTML = left > 0 ? `<span class="t">10.09</span>10:00 大阪駅を出発` : "楽しい旅でした";
   } else {
     const [d, i] = target, it = DAYS[d][i];
     const label = it.label || it.t;
