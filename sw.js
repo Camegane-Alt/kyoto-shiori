@@ -1,6 +1,6 @@
 /* 京都しおり：オフライン用の Service Worker
    中身を更新したら VERSION の数字を上げる（古いキャッシュが消えて新しいものに入れ替わる） */
-const VERSION = "shiori-bc48e153ff";
+const VERSION = "shiori-1e3445845d";
 const PRECACHE = [
   "./",
   "./index.html",

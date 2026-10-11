@@ -272,7 +272,7 @@ dialog.sheet .close{margin-top:12px;width:100%}
 .settle-sum .half{margin-top:8px;font-size:12px;color:var(--ink-2)}
 .settle-result{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--shu-soft);font-weight:700;font-size:15px;line-height:1.5}
 .settle-result b{color:var(--shu);font:800 20px/1 var(--en);font-variant-numeric:tabular-nums;margin-left:4px}
-.settle-form[hidden]{display:none}
+.settle-form[hidden],.settle-form [hidden]{display:none}
 .settle-form{display:grid;gap:10px;background:var(--card);border:var(--line) solid var(--ink);border-radius:22px;padding:16px}
 .settle-form input[type=text],.settle-form input[type=password]{width:100%;min-height:48px;border:var(--line) solid var(--ink);border-radius:14px;background:var(--paper);color:var(--ink);font:16px/1.4 var(--sans);padding:8px 12px}
 .settle-form .yen{position:relative}
@@ -281,13 +281,15 @@ dialog.sheet .close{margin-top:12px;width:100%}
 .payer{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .payer button{min-height:46px;border-radius:999px;border:var(--line) solid var(--ink);background:transparent;color:var(--ink);font:700 14px/1.2 var(--sans);cursor:pointer;padding:0 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .payer button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink)}
+.settle-form .editing-note{margin:0;font-size:12.5px;font-weight:700;color:var(--shu)}
 .settle-form .q{font-size:12px;color:var(--ink-2);margin:0}
 .settle-msg{font-size:13px;color:var(--ink-2);min-height:1.5em;margin:8px 2px 0}
 .settle-msg.err{color:var(--shu);font-weight:700}
 .ledger{list-style:none;margin:0;padding:0;background:var(--card);border:var(--line) solid var(--ink);border-radius:20px;overflow:hidden}
 .ledger li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;min-height:56px;padding:8px 8px 8px 16px}
 .ledger li+li{border-top:1px solid var(--hair)}
-.ledger .w{min-width:0;overflow-wrap:anywhere;font-weight:700;font-size:14.5px;line-height:1.4}
+.ledger li.editing{background:var(--shu-soft)}
+.ledger .w{min-width:0;cursor:pointer;overflow-wrap:anywhere;font-weight:700;font-size:14.5px;line-height:1.4}
 .ledger .w small{display:block;font-size:11.5px;color:var(--ink-2);font-weight:400}
 .ledger .a{font:800 15px/1 var(--en);font-variant-numeric:tabular-nums;white-space:nowrap}
 .ledger .del{width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:var(--ink-2);font:700 18px/1 var(--sans);cursor:pointer}
@@ -395,7 +397,7 @@ dialog.sheet .close{margin-top:12px;width:100%}
 
   <section class="panel" id="settle" role="tabpanel" aria-labelledby="tab-settle">
     <div class="phead"><div class="big">SETTLE<i>.</i></div><div class="meta"><b>WARIKAN</b><span>2人で割り勘</span></div></div>
-    <p class="lead">使ったものと払った人を入れると、割り勘の精算額が出ます。2人のスマホで同じ中身が見られます。</p>
+    <p class="lead">使ったものと払った人を入れると、割り勘の精算額が出ます。2人のスマホで同じ中身が見られます。入れたものは、押すと修正できます。</p>
 
     <form class="settle-form" id="settleLogin" hidden>
       <p class="q">はじめに合言葉を入れてください（このスマホに覚えておきます）。</p>
@@ -408,6 +410,7 @@ dialog.sheet .close{margin-top:12px;width:100%}
 
       <div class="section-title">ADD <span>使ったものを入れる</span></div>
       <form class="settle-form" id="settleAdd">
+        <p class="editing-note" id="settleEditNote" hidden>入れたものを修正しています</p>
         <input type="text" id="settleWhat" maxlength="60" placeholder="品目（例：西源院 お昼）" aria-label="品目" autocomplete="off">
         <div class="yen"><input type="text" id="settleAmount" inputmode="numeric" pattern="[0-9,]*" placeholder="金額" aria-label="金額" autocomplete="off"></div>
         <div class="payer" role="group" aria-label="払った人">
@@ -415,6 +418,7 @@ dialog.sheet .close{margin-top:12px;width:100%}
           <button type="button" data-who="b" aria-pressed="false"></button>
         </div>
         <button class="btn shu" type="submit" id="settleSubmit">追加する</button>
+        <button class="btn" type="button" id="settleCancel" hidden>修正をやめる</button>
       </form>
       <p class="settle-msg" id="settleMsg" role="status"></p>
 
@@ -867,7 +871,7 @@ function showTab(id, scroll) {
 const SETTLE_API = "https://script.google.com/macros/s/AKfycbxb-u-ycvW69HVc8UE58H35KQ3L8QRtuTu3-T5fLGzhJdBWM1iaY9LuU8UXD66PbmIC/exec";
 const SETTLE_PASS_KEY = "shiori-settle-pass";
 const yen = n => `¥${Number(n).toLocaleString("ja-JP")}`;
-const settle = { pass: "", members: { a: "", b: "" }, items: [], who: "a", busy: false };
+const settle = { pass: "", members: { a: "", b: "" }, items: [], who: "a", busy: false, editId: "" };
 
 async function settleCall(body) {
   const res = await fetch(SETTLE_API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ ...body, pass: settle.pass }) });
@@ -905,7 +909,7 @@ function renderSettle() {
   $("#settleList").innerHTML = list.length ? list.map(i => {
     const d = new Date(i.at);
     const when = isNaN(d) ? "" : `${d.getMonth() + 1}/${d.getDate()} 入力`;
-    return `<li><span class="w">${esc(i.what)}<small>${esc(settle.members[i.who])}が払った${when ? ` ・ ${when}` : ""}</small></span><span class="a">${yen(i.amount)}</span><button class="del" type="button" data-id="${esc(i.id)}" aria-label="${esc(i.what)}を消す">×</button></li>`;
+    return `<li${i.id === settle.editId ? ' class="editing"' : ""} data-id="${esc(i.id)}"><span class="w">${esc(i.what)}<small>${esc(settle.members[i.who])}が払った${when ? ` ・ ${when}` : ""}</small></span><span class="a">${yen(i.amount)}</span><button class="del" type="button" data-id="${esc(i.id)}" aria-label="${esc(i.what)}を消す">×</button></li>`;
   }).join("") : `<li><span class="empty">まだ何も入っていません。上から入れてください。</span></li>`;
 }
 
@@ -929,6 +933,20 @@ async function settleLoad(quiet) {
   }
 }
 
+// 修正モード：行を押すと入力欄にその中身が入り、ボタンが「修正する」になる
+function settleEdit(id) {
+  const it = settle.items.find(i => i.id === id);
+  settle.editId = it ? it.id : "";
+  $("#settleWhat").value = it ? it.what : "";
+  $("#settleAmount").value = it ? it.amount.toLocaleString("ja-JP") : "";
+  if (it) settle.who = it.who;
+  $("#settleSubmit").textContent = it ? "修正する" : "追加する";
+  $("#settleCancel").hidden = !it;
+  $("#settleEditNote").hidden = !it;
+  renderSettle();
+  if (it) { settleMsg(""); $("#settleAdd").scrollIntoView({ block: "center", behavior: "smooth" }); }
+}
+
 function initSettle() {
   try { settle.pass = localStorage.getItem(SETTLE_PASS_KEY) || ""; } catch (e) {}
   $("#settleLogin").addEventListener("submit", e => {
@@ -947,28 +965,34 @@ function initSettle() {
     const amount = Number($("#settleAmount").value.replace(/[,，円¥\s]/g, "").replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0)));
     if (!what) { settleMsg("品目を入れてください", true); return; }
     if (!(amount > 0) || !Number.isInteger(amount)) { settleMsg("金額は数字で入れてください", true); return; }
-    settle.busy = true; $("#settleSubmit").setAttribute("aria-disabled", "true"); settleMsg("追加中…");
+    const editing = settle.editId;
+    const verb = editing ? "修正" : "追加";
+    settle.busy = true; $("#settleSubmit").setAttribute("aria-disabled", "true"); settleMsg(`${verb}中…`);
     try {
-      await settleCall({ action: "add", what, amount, who: settle.who });
-      $("#settleWhat").value = ""; $("#settleAmount").value = "";
-      renderSettle(); settleMsg(`「${what}」${yen(amount)} を追加しました`);
-    } catch (er) { settleMsg(er.message === "pass" ? "合言葉がちがうようです" : "追加できませんでした。電波を確認してもう一度押してください。", true); }
+      await settleCall(editing ? { action: "update", id: editing, what, amount, who: settle.who } : { action: "add", what, amount, who: settle.who });
+      settleEdit(""); settleMsg(`「${what}」${yen(amount)} を${verb}しました`);
+    } catch (er) {
+      if (er.message === "gone") { settleEdit(""); await settleLoad(true); settleMsg("その項目はもう消されていました", true); }
+      else settleMsg(er.message === "pass" ? "合言葉がちがうようです" : `${verb}できませんでした。電波を確認してもう一度押してください。`, true);
+    }
     settle.busy = false; $("#settleSubmit").removeAttribute("aria-disabled");
   });
   // 消す：1回目で「消す」に変わり、もう一度押すと消える
   $("#settleList").addEventListener("click", async e => {
     const btn = e.target.closest(".del");
-    if (!btn || settle.busy) return;
+    if (!btn) { const row = e.target.closest("li[data-id]"); if (row && !settle.busy) settleEdit(row.dataset.id); return; }
+    if (settle.busy) return;
     if (!btn.classList.contains("armed")) {
       btn.classList.add("armed"); btn.textContent = "消す";
       setTimeout(() => { if (btn.isConnected) { btn.classList.remove("armed"); btn.textContent = "×"; } }, 3000);
       return;
     }
     settle.busy = true; settleMsg("消しています…");
-    try { await settleCall({ action: "delete", id: btn.dataset.id }); renderSettle(); settleMsg("消しました"); }
+    try { await settleCall({ action: "delete", id: btn.dataset.id }); if (settle.editId === btn.dataset.id) settleEdit(""); else renderSettle(); settleMsg("消しました"); }
     catch (er) { settleMsg("消せませんでした。もう一度押してください。", true); }
     settle.busy = false;
   });
+  $("#settleCancel").addEventListener("click", () => { settleEdit(""); settleMsg(""); });
   $("#settleReload").addEventListener("click", () => settleLoad());
   settleLoad(true);
 }
