@@ -119,6 +119,7 @@ img{max-width:100%;display:block}
   font:700 13.5px/1 var(--sans);cursor:pointer;white-space:nowrap;position:relative}
 .tab[aria-selected="true"]{background:var(--ink);color:var(--on-ink)}
 .tab .today{position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--shu)}
+@media (max-width:420px){ .tab{padding:0 3px;font-size:13px} .tabs .wrap{gap:0} .tab .today{top:5px;right:2px} }
 
 .panel{display:none;padding-top:26px}
 .panel.active{display:block}
@@ -259,6 +260,40 @@ dialog.sheet .sheet-in{padding:20px 16px calc(16px + var(--sab))}
 dialog.sheet h2{font:800 12px/1 var(--en);letter-spacing:.2em;margin-bottom:14px}
 dialog.sheet .close{margin-top:12px;width:100%}
 
+/* ---------- 精算 ---------- */
+.settle-sum{background:var(--card);border:var(--line) solid var(--ink);border-radius:22px;padding:16px 16px 14px;margin:8px 0 18px}
+.settle-sum .lbl{font:800 10px/1 var(--en);letter-spacing:.18em;color:var(--ink-2)}
+.settle-sum .total{font:800 34px/1.1 var(--en);font-variant-numeric:tabular-nums;margin-top:6px}
+.settle-sum .total small{font:700 13px/1 var(--sans);margin-left:4px}
+.settle-sum .each{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--hair)}
+.settle-sum .each div{min-width:0}
+.settle-sum .each b{display:block;font-size:12px;color:var(--ink-2);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.settle-sum .each span{font:800 18px/1.3 var(--en);font-variant-numeric:tabular-nums}
+.settle-sum .half{margin-top:8px;font-size:12px;color:var(--ink-2)}
+.settle-result{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--shu-soft);font-weight:700;font-size:15px;line-height:1.5}
+.settle-result b{color:var(--shu);font:800 20px/1 var(--en);font-variant-numeric:tabular-nums;margin-left:4px}
+.settle-form[hidden]{display:none}
+.settle-form{display:grid;gap:10px;background:var(--card);border:var(--line) solid var(--ink);border-radius:22px;padding:16px}
+.settle-form input[type=text],.settle-form input[type=password]{width:100%;min-height:48px;border:var(--line) solid var(--ink);border-radius:14px;background:var(--paper);color:var(--ink);font:16px/1.4 var(--sans);padding:8px 12px}
+.settle-form .yen{position:relative}
+.settle-form .yen::after{content:"円";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--ink-2)}
+.settle-form .yen input{padding-right:36px;font-family:var(--en);font-weight:700;font-variant-numeric:tabular-nums}
+.payer{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.payer button{min-height:46px;border-radius:999px;border:var(--line) solid var(--ink);background:transparent;color:var(--ink);font:700 14px/1.2 var(--sans);cursor:pointer;padding:0 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.payer button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink)}
+.settle-form .q{font-size:12px;color:var(--ink-2);margin:0}
+.settle-msg{font-size:13px;color:var(--ink-2);min-height:1.5em;margin:8px 2px 0}
+.settle-msg.err{color:var(--shu);font-weight:700}
+.ledger{list-style:none;margin:0;padding:0;background:var(--card);border:var(--line) solid var(--ink);border-radius:20px;overflow:hidden}
+.ledger li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;min-height:56px;padding:8px 8px 8px 16px}
+.ledger li+li{border-top:1px solid var(--hair)}
+.ledger .w{min-width:0;overflow-wrap:anywhere;font-weight:700;font-size:14.5px;line-height:1.4}
+.ledger .w small{display:block;font-size:11.5px;color:var(--ink-2);font-weight:400}
+.ledger .a{font:800 15px/1 var(--en);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ledger .del{width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:var(--ink-2);font:700 18px/1 var(--sans);cursor:pointer}
+.ledger .del.armed{background:var(--shu);color:#fff;font-size:11px;width:auto;padding:0 12px;border-radius:999px}
+.ledger .empty{display:block;padding:18px 16px;color:var(--ink-2);font-size:13.5px}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -322,6 +357,7 @@ dialog.sheet .close{margin-top:12px;width:100%}
     <button class="tab" role="tab" data-tab="stay" id="tab-stay" aria-controls="stay">宿・焼肉</button>
     <button class="tab" role="tab" data-tab="spots" id="tab-spots" aria-controls="spots">寄り道</button>
     <button class="tab" role="tab" data-tab="items" id="tab-items" aria-controls="items">持ち物</button>
+    <button class="tab" role="tab" data-tab="settle" id="tab-settle" aria-controls="settle">精算</button>
   </div>
 </nav>
 
@@ -355,6 +391,37 @@ dialog.sheet .close{margin-top:12px;width:100%}
     <div class="check-progress"><span class="count" id="checkCount">0</span><div class="bar"><i id="checkBar"></i></div></div>
     <div id="checklists"></div>
     <button class="reset" id="checkReset" type="button">チェックをすべて外す</button>
+  </section>
+
+  <section class="panel" id="settle" role="tabpanel" aria-labelledby="tab-settle">
+    <div class="phead"><div class="big">SETTLE<i>.</i></div><div class="meta"><b>WARIKAN</b><span>2人で割り勘</span></div></div>
+    <p class="lead">使ったものと払った人を入れると、割り勘の精算額が出ます。2人のスマホで同じ中身が見られます。</p>
+
+    <form class="settle-form" id="settleLogin" hidden>
+      <p class="q">はじめに合言葉を入れてください（このスマホに覚えておきます）。</p>
+      <input type="password" id="settlePass" autocomplete="current-password" placeholder="合言葉" aria-label="合言葉">
+      <button class="btn fill" type="submit">開く</button>
+    </form>
+
+    <div id="settleMain" hidden>
+      <div class="settle-sum" id="settleSum"></div>
+
+      <div class="section-title">ADD <span>使ったものを入れる</span></div>
+      <form class="settle-form" id="settleAdd">
+        <input type="text" id="settleWhat" maxlength="60" placeholder="品目（例：西源院 お昼）" aria-label="品目" autocomplete="off">
+        <div class="yen"><input type="text" id="settleAmount" inputmode="numeric" pattern="[0-9,]*" placeholder="金額" aria-label="金額" autocomplete="off"></div>
+        <div class="payer" role="group" aria-label="払った人">
+          <button type="button" data-who="a" aria-pressed="true"></button>
+          <button type="button" data-who="b" aria-pressed="false"></button>
+        </div>
+        <button class="btn shu" type="submit" id="settleSubmit">追加する</button>
+      </form>
+      <p class="settle-msg" id="settleMsg" role="status"></p>
+
+      <div class="section-title">LIST <span>入れたもの</span></div>
+      <ul class="ledger" id="settleList"></ul>
+      <button class="reset" id="settleReload" type="button">最新にする</button>
+    </div>
   </section>
 
   <footer class="footer">
@@ -795,8 +862,120 @@ function showTab(id, scroll) {
   }
 }
 
+/* ================= 精算（割り勘） ================= */
+// 保存先：かめちゃんの Google スプレッドシート（tools/settle_gas/Code.gs）。呼び名は合言葉が合ったときだけ返ってくる
+const SETTLE_API = "https://script.google.com/macros/s/AKfycbxb-u-ycvW69HVc8UE58H35KQ3L8QRtuTu3-T5fLGzhJdBWM1iaY9LuU8UXD66PbmIC/exec";
+const SETTLE_PASS_KEY = "shiori-settle-pass";
+const yen = n => `¥${Number(n).toLocaleString("ja-JP")}`;
+const settle = { pass: "", members: { a: "", b: "" }, items: [], who: "a", busy: false };
+
+async function settleCall(body) {
+  const res = await fetch(SETTLE_API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ ...body, pass: settle.pass }) });
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || "error");
+  settle.members = data.members; settle.items = data.items;
+  return data;
+}
+
+function settleMsg(text, err) { const m = $("#settleMsg"); m.textContent = text || ""; m.classList.toggle("err", !!err); }
+
+function renderSettle() {
+  const { a, b } = settle.members;
+  const pa = settle.items.filter(i => i.who === "a").reduce((s, i) => s + i.amount, 0);
+  const pb = settle.items.filter(i => i.who === "b").reduce((s, i) => s + i.amount, 0);
+  const total = pa + pb;
+  // 差額の半分を、少なく払った人が多く払った人へ渡す（1円の端数は多く払った側が持つ）
+  const move = Math.floor(Math.abs(pa - pb) / 2);
+  const result = !total ? "まだ何も入っていません"
+    : move === 0 ? "ぴったり半分ずつ。精算なしで終わりです"
+    : pa > pb ? `${esc(b)} → ${esc(a)} へ<b>${yen(move)}</b>` : `${esc(a)} → ${esc(b)} へ<b>${yen(move)}</b>`;
+  $("#settleSum").innerHTML = `
+    <div class="lbl">TOTAL ／ 全体の合計</div>
+    <div class="total">${yen(total)}<small>（${settle.items.length}件）</small></div>
+    <div class="each"><div><b>${esc(a)}が払った</b><span>${yen(pa)}</span></div><div><b>${esc(b)}が払った</b><span>${yen(pb)}</span></div></div>
+    <div class="half">1人あたり ${yen(Math.floor(total / 2))}</div>
+    <div class="settle-result">${result}</div>`;
+
+  document.querySelectorAll(".payer button").forEach(btn => {
+    btn.textContent = `${settle.members[btn.dataset.who]}が払った`;
+    btn.setAttribute("aria-pressed", String(btn.dataset.who === settle.who));
+  });
+
+  const list = [...settle.items].reverse();
+  $("#settleList").innerHTML = list.length ? list.map(i => {
+    const d = new Date(i.at);
+    const when = isNaN(d) ? "" : `${d.getMonth() + 1}/${d.getDate()} 入力`;
+    return `<li><span class="w">${esc(i.what)}<small>${esc(settle.members[i.who])}が払った${when ? ` ・ ${when}` : ""}</small></span><span class="a">${yen(i.amount)}</span><button class="del" type="button" data-id="${esc(i.id)}" aria-label="${esc(i.what)}を消す">×</button></li>`;
+  }).join("") : `<li><span class="empty">まだ何も入っていません。上から入れてください。</span></li>`;
+}
+
+function settleShow(loggedIn) {
+  $("#settleLogin").hidden = loggedIn;
+  $("#settleMain").hidden = !loggedIn;
+}
+
+async function settleLoad(quiet) {
+  if (!SETTLE_API) { settleShow(false); $("#settleLogin .q").textContent = "準備中です（保存先がまだつながっていません）。"; return; }
+  if (!settle.pass) { settleShow(false); return; }
+  if (!quiet) settleMsg("読み込み中…");
+  try {
+    await settleCall({ action: "list" });
+    settleShow(true); renderSettle(); settleMsg("");
+  } catch (e) {
+    if (e.message === "pass") {
+      settle.pass = ""; try { localStorage.removeItem(SETTLE_PASS_KEY); } catch (er) {}
+      settleShow(false); $("#settleLogin .q").textContent = "合言葉がちがうようです。もう一度入れてください。";
+    } else { settleShow(true); renderSettle(); settleMsg("つながりませんでした。電波のいいところで「最新にする」を押してください。", true); }
+  }
+}
+
+function initSettle() {
+  try { settle.pass = localStorage.getItem(SETTLE_PASS_KEY) || ""; } catch (e) {}
+  $("#settleLogin").addEventListener("submit", e => {
+    e.preventDefault();
+    const v = $("#settlePass").value.trim();
+    if (!v) return;
+    settle.pass = v; try { localStorage.setItem(SETTLE_PASS_KEY, v); } catch (er) {}
+    $("#settlePass").value = "";
+    settleLoad();
+  });
+  document.querySelectorAll(".payer button").forEach(btn => btn.addEventListener("click", () => { settle.who = btn.dataset.who; renderSettle(); }));
+  $("#settleAdd").addEventListener("submit", async e => {
+    e.preventDefault();
+    if (settle.busy) return;
+    const what = $("#settleWhat").value.trim();
+    const amount = Number($("#settleAmount").value.replace(/[,，円¥\s]/g, "").replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0)));
+    if (!what) { settleMsg("品目を入れてください", true); return; }
+    if (!(amount > 0) || !Number.isInteger(amount)) { settleMsg("金額は数字で入れてください", true); return; }
+    settle.busy = true; $("#settleSubmit").setAttribute("aria-disabled", "true"); settleMsg("追加中…");
+    try {
+      await settleCall({ action: "add", what, amount, who: settle.who });
+      $("#settleWhat").value = ""; $("#settleAmount").value = "";
+      renderSettle(); settleMsg(`「${what}」${yen(amount)} を追加しました`);
+    } catch (er) { settleMsg(er.message === "pass" ? "合言葉がちがうようです" : "追加できませんでした。電波を確認してもう一度押してください。", true); }
+    settle.busy = false; $("#settleSubmit").removeAttribute("aria-disabled");
+  });
+  // 消す：1回目で「消す」に変わり、もう一度押すと消える
+  $("#settleList").addEventListener("click", async e => {
+    const btn = e.target.closest(".del");
+    if (!btn || settle.busy) return;
+    if (!btn.classList.contains("armed")) {
+      btn.classList.add("armed"); btn.textContent = "消す";
+      setTimeout(() => { if (btn.isConnected) { btn.classList.remove("armed"); btn.textContent = "×"; } }, 3000);
+      return;
+    }
+    settle.busy = true; settleMsg("消しています…");
+    try { await settleCall({ action: "delete", id: btn.dataset.id }); renderSettle(); settleMsg("消しました"); }
+    catch (er) { settleMsg("消せませんでした。もう一度押してください。", true); }
+    settle.busy = false;
+  });
+  $("#settleReload").addEventListener("click", () => settleLoad());
+  settleLoad(true);
+}
+
 function init() {
   renderTimelines(); renderSpots(); renderStay(); renderChecks(); renderContacts(); renderCredits();
+  initSettle();
 
   // 予約番号（タップで表示／もう一度で伏せる）
   const rb = $("#reserve");
@@ -814,7 +993,7 @@ function init() {
     fm.addEventListener("input", () => { try { localStorage.setItem("shiori-free-memo", fm.value); } catch (e) {} });
   }
 
-  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => showTab(t.dataset.tab, true)));
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => { showTab(t.dataset.tab, true); if (t.dataset.tab === "settle") settleLoad(true); }));
   document.addEventListener("click", e => {
     const g = e.target.closest("[data-goto]");
     if (g) { showTab(g.dataset.goto, true); }
