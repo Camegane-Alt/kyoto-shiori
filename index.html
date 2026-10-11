@@ -274,7 +274,7 @@ dialog.sheet .close{margin-top:12px;width:100%}
 .settle-result b{color:var(--shu);font:800 20px/1 var(--en);font-variant-numeric:tabular-nums;margin-left:4px}
 .settle-form[hidden],.settle-form [hidden]{display:none}
 .settle-form{display:grid;gap:10px;background:var(--card);border:var(--line) solid var(--ink);border-radius:22px;padding:16px}
-.settle-form input[type=text],.settle-form input[type=password]{width:100%;min-height:48px;border:var(--line) solid var(--ink);border-radius:14px;background:var(--paper);color:var(--ink);font:16px/1.4 var(--sans);padding:8px 12px}
+.settle-form input[type=text]{width:100%;min-height:48px;border:var(--line) solid var(--ink);border-radius:14px;background:var(--paper);color:var(--ink);font:16px/1.4 var(--sans);padding:8px 12px}
 .settle-form .yen{position:relative}
 .settle-form .yen::after{content:"円";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--ink-2)}
 .settle-form .yen input{padding-right:36px;font-family:var(--en);font-weight:700;font-variant-numeric:tabular-nums}
@@ -401,7 +401,7 @@ dialog.sheet .close{margin-top:12px;width:100%}
 
     <form class="settle-form" id="settleLogin" hidden>
       <p class="q">はじめに合言葉を入れてください（このスマホに覚えておきます）。</p>
-      <input type="password" id="settlePass" autocomplete="current-password" placeholder="合言葉" aria-label="合言葉">
+      <input type="text" id="settlePass" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="合言葉（日本語でもOK）" aria-label="合言葉">
       <button class="btn fill" type="submit">開く</button>
     </form>
 
@@ -951,7 +951,7 @@ function initSettle() {
   try { settle.pass = localStorage.getItem(SETTLE_PASS_KEY) || ""; } catch (e) {}
   $("#settleLogin").addEventListener("submit", e => {
     e.preventDefault();
-    const v = $("#settlePass").value.trim();
+    const v = $("#settlePass").value.normalize("NFC").trim();
     if (!v) return;
     settle.pass = v; try { localStorage.setItem(SETTLE_PASS_KEY, v); } catch (er) {}
     $("#settlePass").value = "";
